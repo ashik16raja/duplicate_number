@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+public class Dulicate {
+    private Long number;
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        Dulicate dulicate=new Dulicate();
+        System.out.println("Enter the number= ");
+        dulicate.number=input.nextLong();
+        if(dulicate.number==0)
+            System.out.println("enter valid number");
+        else{
+            ArrayList<Long> numbers=new ArrayList<>();
+            HashMap<Long,Integer> dulicateNumbers=new HashMap<>();
+            while(dulicate.number>0){
+                Long temp=dulicate.number%10;
+                if(numbers.contains(temp))
+                 if(dulicateNumbers.containsKey(temp)){
+                     dulicateNumbers.put(temp,dulicateNumbers.get(temp)+1);
+                 }else
+                     dulicateNumbers.put(temp,1);
+                numbers.add(temp);
+                dulicate.number=dulicate.number/10;
+            }
+            System.out.println(numbers.toString());
+            System.out.println(dulicateNumbers.toString());
+        }
+    }
+}
